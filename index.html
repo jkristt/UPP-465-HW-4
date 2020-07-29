@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Healthy Chicago</title>
+
+<link href="style.css" rel="stylesheet" type="text/css"
+
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap" rel="stylesheet">
+
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+ <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+
+ <script src="js/leaflet-providers.js"></script>
+
+</head>
+
+<header> </header>
+
+<body> 
+
+	<div class = "intro">
+	<h1> BOBA </h1>
+	<h2> __________________________________________ </h2>
+	<h3> Boba within a one-mile radius of CUPPA </h3>
+	</div>
+
+	<div class ="paragraph">
+	<p>
+		There are five boba shops within a one-mile radius of CUPPA. Not nearly enough if you ask me.
+	</p>
+	</div>
+
+<div id = "map"> </div>
+
+<script>
+
+var myMap = L.map('map').setView([41.876375, -87.649589], 15);
+
+var Stamen_TonerBackground = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}{r}.{ext}', {
+	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	subdomains: 'abcd',
+	minZoom: 0,
+	maxZoom: 20,
+	ext: 'png'
+}).addTo(myMap);
+
+var circle = L.circle([41.876375, -87.649589],{
+	color: 'black',
+	fillColor: 'f03',
+	fillOpacity: 0.5,
+	radius: 200
+}).addTo(myMap).bindPopup("How far I would want to walk if I were to crave some boba at some random day at CUPPA")
+
+var myIcon = L.icon({
+	iconUrl: 'bubbletea.png',
+	iconSize: [20,40],
+});
+
+var one = L.marker([41.86511, -87.646595],{
+	icon: myIcon
+}).addTo(myMap).bindPopup("Joy Yee");
+
+var two = L.marker([41.86979, -87.65817],{
+	icon: myIcon
+}).addTo(myMap).bindPopup("Gathers Tea Bar");
+
+var three = L.marker([41.88504, -87.65171],{
+	icon: myIcon
+}).addTo(myMap).bindPopup("Eat Me Milk Me Coffee & Tea");
+
+var four = L.marker([41.86973, -87.65584],{
+	icon: myIcon
+}).addTo(myMap).bindPopup("Tai Chi Bubble Tea");
+
+var five = L.marker([41.87167, -87.66192],{
+	icon: myIcon
+}).addTo(myMap).bindPopup("Living Water Tea House");
+
+var polygon = L.polygon([
+	[41.87654, -87.65011],
+	[41.87654, -87.64965],
+	[41.87599, -87.64964],
+	[41.87599,-87.65006],
+	[41.87635,-87.65007],
+	[41.87635, -87.65011],
+	[41.87654, -87.65011],
+], {
+	color: 'red',
+	fillColor: 'black',
+	fillOpacity: .11,
+}).addTo(myMap).bindPopup("CUPPA");
+
+var line = L.polyline([
+	[41.876375, -87.649589],
+	[41.87663, -87.64952],
+	[41.87673, -87.64721],
+	[41.86842,-87.64707],
+	[41.86823,-87.64703],
+	[41.86511, -87.646595],
+], {
+	color: 'red',
+}).addTo(myMap).bindPopup("My typical walk to my go-to boba shop, Joy Yee");
+
+</script>
+
+</body>
+
+</html>
+
+
+
+
+
+
